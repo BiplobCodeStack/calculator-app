@@ -45,7 +45,7 @@ body {
     padding: 10px;
     font-size: 26px;
     text-align: right;
-    background: #f3f3f3;
+    background: #1a1919;
     border: none;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -66,14 +66,14 @@ body {
     font-size: 20px;
     border: none;
     cursor: pointer;
-    background: #f0f0f0;
+    background: #0b0101;
     border-radius: 8px;
     transition: 0.3s ease-in-out;
   }
   
   .button:hover {
     background: #ffcc00;
-    color: #fff;
+    color: #09dd77;
     transform: scale(1.05);
   }
   
