@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const Calculator = () => {
+  const [input, setInput] = useState("0");
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem("calculatorValue");
+    if (savedValue) setInput(savedValue);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("calculatorValue", input);
+  }, [input]);
+
+  const handleClick = (value) => {
+    if (value === "C") {
+      setInput("0");
+    } else if (value === "=") {
+      try {
+        setInput(eval(input).toString());
+      } catch {
+        setInput("Error");
+      }
+    } else {
+      setInput(input === "0" ? value : input + value);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="calculator">
+      <div className="display">{input}</div>
+      <div className="buttons">
+        {["C", "%", "±", "/"].map((op) => (
+          <button key={op} className="operator" onClick={() => handleClick(op)}>
+            {op}
+          </button>
+        ))}
+        {[7, 8, 9, "x"].map((val) => (
+          <button key={val} className={val === "x" ? "operation" : "number"} onClick={() => handleClick(val.toString())}>
+            {val}
+          </button>
+        ))}
+        {[4, 5, 6, "-"].map((val) => (
+          <button key={val} className={val === "-" ? "operation" : "number"} onClick={() => handleClick(val.toString())}>
+            {val}
+          </button>
+        ))}
+        {[1, 2, 3, "+"].map((val) => (
+          <button key={val} className={val === "+" ? "operation" : "number"} onClick={() => handleClick(val.toString())}>
+            {val}
+          </button>
+        ))}
+        {[0, ".", "="].map((val) => (
+          <button key={val} className={val === "=" ? "operation" : "number"} onClick={() => handleClick(val.toString())}>
+            {val}
+          </button>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default Calculator;
