@@ -1,0 +1,72 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  width: 300px;
+  background: #222;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.display {
+  background: #4f4f4f;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  text-align: right;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+button {
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button.operator {
+  background-color: #fe9f09; /* Operators */
+}
+
+button.square {
+  background-color: #5b5b5a; /* Square */
+}
+
+button.equals {
+  background-color: #fe9f09; /* Equals */
+}
+
+button:nth-child(1),
+button:nth-child(2),
+button:nth-child(3),
+button:nth-child(5),
+button:nth-child(6),
+button:nth-child(7),
+button:nth-child(9),
+button:nth-child(10),
+button:nth-child(11),
+button:nth-child(13),
+button:nth-child(14) {
+  background-color: #737a7b; /* Numbers */
+}
